@@ -10,11 +10,9 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
-  </div>
+      <div id="star-rating"></div>
+    </div>
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
@@ -23,3 +21,10 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  $('#star-rating').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]' <!-- Name of rating variable on database -->
+  });
+</script>

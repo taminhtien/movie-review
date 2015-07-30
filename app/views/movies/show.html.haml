@@ -27,6 +27,7 @@
                 %td
                   %strong Rating:
                 %td= @movie.rating
+          = link_to "Write your review", new_movie_review_path(@movie), class: "btn btn-danger"
       .col-md-7.col-md-offset-1
         %h1.review_title= @movie.title
         %p= @movie.description
@@ -36,6 +37,15 @@
         - else
           - @reviews.each do |review|
             .reviews
-              %p= review.rating
+              .star-rating{"data-score" => review.rating}
               %p= review.comment
               %p= review.user.email
+
+:javascript
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
