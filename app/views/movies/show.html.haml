@@ -8,13 +8,19 @@
             %tbody
               %tr
                 %td
-                  %strong
-                    Title:
+                  %strong Title:
                 %td= @movie.title
               %tr
                 %td
                   %strong Description:
                 %td= @movie.description
+              %tr
+                %td
+                  %strong Average reviews:
+                %td
+                  .star-rating{"data-score" => @avg_reviews}
+                  %em= @reviews.length
+                  %em reviews
               %tr
                 %td
                   %strong Movie length:
